@@ -5,7 +5,7 @@
  * Defines RefworksXMLImporter.
  */
 
-class RefworksXMLImporter extends ScholarBatchImporter {
+class RefworksXMLImporter extends IslandoraBatchImporter {
   protected $itemClass = 'RefworksXMLImportObject';
 
   /**
