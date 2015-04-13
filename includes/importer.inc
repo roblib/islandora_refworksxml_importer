@@ -15,7 +15,11 @@ class RefworksXMLImporter extends ScholarBatchImporter {
    */
   public function getNumber() {
     $refworks = new DOMDocument();
-    $refworks->load($this->file->uri);
+    $refworks->load(
+      drupal_realpath(
+        $this->file->uri
+      )
+    );
     $xpath = new DOMXPath($refworks);
     $results = $xpath->query('/refworks/reference');
     return $results ? $results->length : 0;
