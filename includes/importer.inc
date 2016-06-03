@@ -17,7 +17,7 @@ class RefworksXMLImporter extends IslandoraBatchImporter {
     $refworks = new DOMDocument();
     $refworks->load(
       drupal_realpath(
-        $this->file['file']->uri
+        $this->file->uri
       )
     );
     $xpath = new DOMXPath($refworks);
