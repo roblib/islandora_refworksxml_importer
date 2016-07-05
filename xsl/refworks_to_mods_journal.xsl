@@ -56,8 +56,8 @@
                     </xsl:choose>
                     <role>
                         <roleTerm>
-                            <xsl:attribute name="authority">marcrelator</xsl:attribute>
-                            <xsl:attribute name="type">text</xsl:attribute>Author</roleTerm>
+                            <xsl:attribute name="authority">local</xsl:attribute>
+                            <xsl:attribute name="type">text</xsl:attribute>author</roleTerm>
                     </role>
                 </name>
             </xsl:for-each>
@@ -99,13 +99,13 @@
                     </xsl:choose>
                 </xsl:for-each>
                 </identifier> -->
-           <!-- HANDLING DOIs in the drush script as there is a lot of logic <xsl:if test="//reference/do/text() [normalize-space(.) ]">
+            <xsl:if test="//reference/do/text() [normalize-space(.) ]">
                 <xsl:for-each select="//reference/do">
                     <xsl:call-template name="doi">
                         <xsl:with-param name="strdoi" select="."/>
                     </xsl:call-template>
                 </xsl:for-each>
-            </xsl:if>-->
+            </xsl:if>
             <relatedItem>
                 <xsl:attribute name="type">host</xsl:attribute>
                 <xsl:if test="//reference/t2/text() [normalize-space(.) ]">
@@ -162,32 +162,6 @@
                         <xsl:value-of select="//reference/fd"/>
                     </dateOther>
                 </originInfo>
-                <part>
-                    <date>
-                        <xsl:value-of select="//reference/yr"/>
-                    </date>
-                    <detail>
-                        <xsl:attribute name="type">volume</xsl:attribute>
-                        <number>
-                            <xsl:value-of select="//reference/vo"/>
-                        </number>
-                    </detail>
-                    <detail>
-                        <xsl:attribute name="type">issue</xsl:attribute>
-                        <number>
-                            <xsl:value-of select="//reference/is"/>
-                        </number>
-                    </detail>
-                    <extent>
-                        <xsl:attribute name="unit">page</xsl:attribute>
-                        <start>
-                            <xsl:value-of select="//reference/sp"/>
-                        </start>
-                        <end>
-                            <xsl:value-of select="//reference/op"/>
-                        </end>
-                    </extent>
-                </part>
                 <xsl:if test="//reference/sn/text() [normalize-space(.) ]">
                         <xsl:for-each select="//reference/sn">
                             <xsl:call-template name="issn">
@@ -196,6 +170,32 @@
                         </xsl:for-each>
                 </xsl:if>
             </relatedItem>
+            <part>
+                <date>
+                    <xsl:value-of select="//reference/yr"/>
+                </date>
+                <detail>
+                    <xsl:attribute name="type">volume</xsl:attribute>
+                    <number>
+                        <xsl:value-of select="//reference/vo"/>
+                    </number>
+                </detail>
+                <detail>
+                    <xsl:attribute name="type">issue</xsl:attribute>
+                    <number>
+                        <xsl:value-of select="//reference/is"/>
+                    </number>
+                </detail>
+                <extent>
+                    <xsl:attribute name="unit">page</xsl:attribute>
+                    <start>
+                        <xsl:value-of select="//reference/sp"/>
+                    </start>
+                    <end>
+                        <xsl:value-of select="//reference/op"/>
+                    </end>
+                </extent>
+            </part>
             <subject authority="local">
                 <xsl:for-each select="//reference/k1">
                     <topic>

@@ -54,9 +54,9 @@
                     </xsl:choose>
                     <role>
                         <roleTerm>
-                            <xsl:attribute name="authority">marcrelator</xsl:attribute>
+                            <xsl:attribute name="authority">local</xsl:attribute>
                             <xsl:attribute name="type">text</xsl:attribute>
-                            <xsl:text>Author</xsl:text>
+                            <xsl:text>author</xsl:text>
                         </roleTerm>
                     </role>
                 </name>
@@ -174,9 +174,9 @@
                         </xsl:choose>
                         <role>
                             <roleTerm>
-                                <xsl:attribute name="authority">marcrelator</xsl:attribute>
+                                <xsl:attribute name="authority">local</xsl:attribute>
                                 <xsl:attribute name="type">text</xsl:attribute>
-                                <xsl:text>Editor</xsl:text>
+                                <xsl:text>editor</xsl:text>
                             </roleTerm>
                         </role>
                     </name>
@@ -208,20 +208,6 @@
                         <xsl:value-of select="//reference/yr"/>
                     </dateIssued>
                 </originInfo>
-                <part>
-                    <date>
-                        <xsl:value-of select="//reference/yr"/>
-                    </date>
-                    <extent>
-                        <xsl:attribute name="unit">page</xsl:attribute>
-                        <start>
-                            <xsl:value-of select="//reference/sp"/>
-                        </start>
-                        <end>
-                            <xsl:value-of select="//reference/op"/>
-                        </end>
-                    </extent>
-                </part>
                 
                 <xsl:if test="//reference/sn/text() [normalize-space(.) ]">
                     <xsl:for-each select="//reference/sn">
@@ -242,7 +228,21 @@
                     </title>
                 </titleInfo>
             </relatedItem>
-            </xsl:if>    
+            </xsl:if>  
+            <part>
+                <date>
+                    <xsl:value-of select="//reference/yr"/>
+                </date>
+                <extent>
+                    <xsl:attribute name="unit">page</xsl:attribute>
+                    <start>
+                        <xsl:value-of select="//reference/sp"/>
+                    </start>
+                    <end>
+                        <xsl:value-of select="//reference/op"/>
+                    </end>
+                </extent>
+            </part>
         </mods>
     </xsl:template>
     

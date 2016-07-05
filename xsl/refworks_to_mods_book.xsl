@@ -56,8 +56,8 @@
                     </xsl:choose>
                     <role>
                         <roleTerm>
-                            <xsl:attribute name="authority">marcrelator</xsl:attribute>
-                            <xsl:attribute name="type">text</xsl:attribute>Author</roleTerm>
+                            <xsl:attribute name="authority">local</xsl:attribute>
+                            <xsl:attribute name="type">text</xsl:attribute>author</roleTerm>
                     </role>
                 </name>
             </xsl:for-each>

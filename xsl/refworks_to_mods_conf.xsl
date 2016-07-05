@@ -54,9 +54,9 @@
                     </xsl:choose>
                     <role>
                         <roleTerm>
-                            <xsl:attribute name="authority">marcrelator</xsl:attribute>
+                            <xsl:attribute name="authority">local</xsl:attribute>
                             <xsl:attribute name="type">text</xsl:attribute>
-                            <xsl:text>Author</xsl:text>
+                            <xsl:text>author</xsl:text>
                         </roleTerm>
                     </role>
                 </name>
@@ -201,9 +201,9 @@
                         </xsl:choose>
                         <role>
                             <roleTerm>
-                                <xsl:attribute name="authority">marcrelator</xsl:attribute>
+                                <xsl:attribute name="authority">local</xsl:attribute>
                                 <xsl:attribute name="type">text</xsl:attribute>
-                                <xsl:text>Editor</xsl:text>
+                                <xsl:text>editor</xsl:text>
                             </roleTerm>
                         </role>
                     </name>
@@ -249,38 +249,6 @@
                         </place>
                     </xsl:if>
                 </originInfo>
-                <part>
-                    <date>
-                        <xsl:value-of select="//reference/yr"/>
-                    </date>
-                    <xsl:if test="//reference/vo/text() [normalize-space(.) ]">
-                    <detail>
-                        <xsl:attribute name="type">volume</xsl:attribute>
-                        <number>
-                            <xsl:value-of select="//reference/vo"/>
-                        </number>
-                    </detail>
-                    </xsl:if>
-                    <xsl:if test="//reference/is/text() [normalize-space(.) ]">                   
-                    <detail>
-                        <xsl:attribute name="type">issue</xsl:attribute>
-                        <number>
-                            <xsl:value-of select="//reference/is"/>
-                        </number>
-                    </detail>
-                    </xsl:if>
-                    <xsl:if test="//reference/sp/text() [normalize-space(.) ] | //reference/op/text() [normalize-space(.) ] ">
-                    <extent>
-                        <xsl:attribute name="unit">page</xsl:attribute>
-                        <start>
-                            <xsl:value-of select="//reference/sp"/>
-                        </start>
-                        <end>
-                            <xsl:value-of select="//reference/op"/>
-                        </end>
-                    </extent>
-                    </xsl:if>
-                </part>
                 <xsl:if test="//reference/sn/text() [normalize-space(.) ]">
                     <xsl:for-each select="//reference/sn">
                         <xsl:call-template name="isbn">
@@ -313,6 +281,38 @@
                 </titleInfo>
             </relatedItem>
             </xsl:if>    
+            <part>
+                <date>
+                    <xsl:value-of select="//reference/yr"/>
+                </date>
+                <xsl:if test="//reference/vo/text() [normalize-space(.) ]">
+                    <detail>
+                        <xsl:attribute name="type">volume</xsl:attribute>
+                        <number>
+                            <xsl:value-of select="//reference/vo"/>
+                        </number>
+                    </detail>
+                </xsl:if>
+                <xsl:if test="//reference/is/text() [normalize-space(.) ]">                   
+                    <detail>
+                        <xsl:attribute name="type">issue</xsl:attribute>
+                        <number>
+                            <xsl:value-of select="//reference/is"/>
+                        </number>
+                    </detail>
+                </xsl:if>
+                <xsl:if test="//reference/sp/text() [normalize-space(.) ] | //reference/op/text() [normalize-space(.) ] ">
+                    <extent>
+                        <xsl:attribute name="unit">page</xsl:attribute>
+                        <start>
+                            <xsl:value-of select="//reference/sp"/>
+                        </start>
+                        <end>
+                            <xsl:value-of select="//reference/op"/>
+                        </end>
+                    </extent>
+                </xsl:if>
+            </part>
         </mods>
     </xsl:template>
     

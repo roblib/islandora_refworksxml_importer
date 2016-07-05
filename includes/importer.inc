@@ -122,28 +122,23 @@ class RefworksXMLImportObject extends IslandoraImportObject {
       switch ($genre_string) {
         case 'Book':
           $xsl_path = $path . '/xsl/refworks_to_mods_book.xsl';
-          $genre->item(0)->nodeValue = 'book';
           break;
 
         case 'Book, Section':
         case 'Book, Chapter':
           $xsl_path = $path . '/xsl/refworks_to_mods_book_section.xsl';
-          $genre->item(0)->nodeValue = 'chapter';
           break;
 
         case 'Conference Proceedings':
           $xsl_path = $path . '/xsl/refworks_to_mods_conf.xsl';
-          $genre->item(0)->nodeValue = 'paper-conference';
           break;
 
         case 'Newspaper Article':
           $xsl_path = $path . '/xsl/refworks_to_mods_journal.xsl';
-          $genre->item(0)->nodeValue = 'article-newspaper';
           break;
 
         default:
           $xsl_path = $path . '/xsl/refworks_to_mods_journal.xsl';
-          $genre->item(0)->nodeValue = 'article-journal';
       }
       $xslt = new XSLTProcessor();
       $xsl_doc = new DomDocument();
